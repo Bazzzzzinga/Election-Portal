@@ -1,27 +1,6 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{% block title %}Page Title{% endblock %} | Election Portal</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/bootstrap.min.css' %}"/>
-</head>
-<body>
-	<div class="col-md-12"  style="padding:1%;border-color:#800000;border-top-width:5px;border-bottom-width:5px;border-right-width:0px;border-left-width:0px;border-style:solid">
-		<div class="col-md-1"></div>
-		<div class="col-md-10"><img src="{% static 'Election_Portal/images/header.png' %}"></div>
-		<div class="col-md-1"></div>		
-	</div>
-	{% block content %}{% endblock %}
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-		<div class="col-md-12"  style="background-color:#800000;padding:1%">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<img class="pull-right" src="{% static 'Election_Portal/images/footer-img.png' %}"><br><br><br><br>
-				<span class="pull-right" style="color:#FFFFFF">&copy;2016 All Rights Reserved IIT (BHU) Varanasi</span>
-			</div>
-			<div class="col-md-2"></div>		
-		</div>		
-	</nav>
+{% extends "Election_Portal/template.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
 
-</body>
-</html>
+
+{% endblock %}
