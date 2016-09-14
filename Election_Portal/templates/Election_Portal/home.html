@@ -1,20 +1,22 @@
 {% extends "Election_Portal/template.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="container">
-	<ul class="nav nav-pills">
-		<li><a data-toggle="pill" href="#past">Past Elections</a></li>
-		<li class="active"><a data-toggle="pill" href="#ongoing">Ongoing Elections</a></li>
-		<li><a data-toggle="pill" href="#upcoming">Upcoming Elections</a></li>
-	</ul>
-	<div class="tab-content">
-		<div id="past" class="tab-pane fade">
+<div class="container" style="margin-top:20px">
+	<div class="row">
+		<div class="col s12">
+			<ul class="tabs">
+				<li class="tab col s6"><a href="#past">Past Elections</a></li>
+				<li class="tab col s6"><a class="active" href="#ongoing">Ongoing Elections</a></li>
+				<li class="tab col s6"><a href="#upcoming">Upcoming Elections</a></li>
+			</ul>		
+		</div>
+		<div id="past" class="col s12">
 			No past elections available as of now.
 		</div>
-		<div id="ongoing" class="tab-pane fade in active">
+		<div id="ongoing" class="col s12">
 			No ongoing elections available as of now.
 		</div>
-		<div id="upcoming" class="tab-pane fade">
+		<div id="upcoming" class="col s12">
 			No upcoming elections available as of now.
 		</div>
 	</div>
