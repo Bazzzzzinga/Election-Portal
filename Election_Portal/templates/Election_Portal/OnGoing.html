@@ -1,0 +1,137 @@
+{% extends "Election_Portal/template.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<script>
+	function startTimer(duration, display) {
+		    var start = Date.now(),
+			diff,
+			hours,
+			minutes,
+			seconds;
+		    function timer() {
+			// get the number of seconds that have elapsed since 
+			// startTimer() was called
+			diff = duration - (((Date.now() - start) / 1000) | 0);
+
+			// does the same job as parseInt truncates the float
+			minutes = (diff / 60) | 0;
+			hours = (minutes/60) | 0;
+			minutes=(minutes-(hours*60)) | 0;
+			seconds = (diff % 60) | 0;
+				
+			hours= hours < 10 ? "0" + hours : hours;
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			display.textContent = hours + ":" + minutes + ":" + seconds; 
+
+			if (diff <= 0) {
+			    // add one second so that the count down starts at the full 				duration
+			    // example 05:00 not 04:59
+			    start = Date.now() + 1000;
+			}
+		    };
+		    // we don't want to wait a full second before the timer starts
+		    timer();
+		    setInterval(timer, 1000);
+		}
+
+		window.onload = function () {
+		    var alpha = 60 * 60 * 5,
+			display = document.querySelector('#time');
+		    startTimer(alpha, display);
+		};
+</script>
+<div class="row">
+	<div class="col s10"></div>
+	<div class="col s2">
+		<font size="5", color="Black"><strong><i>Elections close in</i></strong>
+		<br>
+		<span id="time"></span>
+	</div>
+</div>
+
+
+<div class="row">
+    <form class="col s12">
+    	<div class="row">
+    		<div class="col s1"></div>
+			<div class="col s2">
+				<font size="5" color="#008080"><u><i><strong>List Of Candidates</strong></i></u></font>
+			</div>
+			<div class="col s9"></div>
+    	</div>
+
+    	<br>
+    	<br>
+
+    	<div class="row">
+        	<div class="col s3"></div>
+        	<div class="col s2 valign center-block">
+        		<font size="5" style="background-color:#F5DEB3;color:#8B4513">Name</font>
+        	</div>
+        	<div class="col s2">
+        		<font size="5" style="background-color:#F5DEB3;color:#8B4513">Department</font>
+        	</div>
+        	<div class="col s2">
+        		<font size="5" style="background-color:#F5DEB3;color:#8B4513">Link</font>
+        	</div>
+        	<div class="col s1>">
+        		<font size="5" style="background-color:#F5DEB3;color:#8B4513">Vote</font>
+        	</div>
+        	<div class="col s2"></div>
+    	</div>
+
+    	<br>
+
+    	<div class="row">
+        	<div class="col s3"></div>
+        	<div class="col s2">
+        		<font color="#8B008B">Male</font><br>
+        	</div>
+        	<div class="col s2">
+        		<font size="5" color="#DB7093">Computer Science</font>
+        	</div>
+        	<div class="col s2">
+        		 <a href="URL">Visit Manifesto</a> 
+        	</div>
+        	<div class="col s1">
+        		<input color="black" id="male" type="radio" name="gender" value="male">
+                <label for="male"></label>
+        	</div>
+        	<div class="col s2"></div>
+    	</div>
+
+    	<br>
+
+    	<div class="row">
+        	<div class="col s3"></div>
+        	<div class="col s2">
+        		<font color="#8B008B">Female</font><br>
+        	</div>
+        	<div class="col s2">
+        		<font size="5" color="#DB7093">Mechanical</font>
+        	</div>
+        	<div class="col s2">
+        		 <a href="URL">Visit Manifesto</a> 
+        	</div>
+        	<div class="col s1">
+        		<input color="black" id="female" type="radio" name="gender" value="female">
+                <label for="female"></label>
+        	</div>
+        	<div class="col s2"></div>
+    	</div>
+
+    	<br>
+
+    	<div class="row">
+    		<div class="col s9"></div>
+    		<div class="col s1">
+    			<button type="submit" name="action">Submit</button>
+    		</div>
+    		<div class="col s2"></div>
+    	</div>
+    </form>
+</div>
+
+{% endblock %}

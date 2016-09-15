@@ -2,3 +2,5 @@
 *.pyc
 #Virtual Environment
 venv
+#Non-required files
+*.*~

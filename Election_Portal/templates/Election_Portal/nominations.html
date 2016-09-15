@@ -1,0 +1,63 @@
+{% extends "Election_Portal/template.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<br>
+<br>
+
+<div class="row">
+    <form class="col s12">
+
+        <div class="row">
+        	<div class="col s4"></div>
+        	<div class="col s3">
+        		<label for="first_name"><font size="3">First Name</font></label>
+          		<input id="first_name" type="text" class="validate">
+        	</div>
+        	<div class="col s5"></div>
+        </div>
+
+
+        <div class="row">
+        	<div class="col s4"></div>
+        	<div class="col s3">
+        		<label for="last_name"><font size="3">Last Name</font></label>
+          		<input id="last_name" type="text" class="validate">
+        	</div>
+        	<div class="col s5"></div>
+        </div>
+
+
+      	<div class="row">
+      		<div class="col s4"></div>
+        	<div class="col s3">
+        		<label for="branch"><font size="3">Branch</font></label>
+          		<input id="branch" type="text" class="validate">
+        	</div>
+        	<div class="col s5"></div>
+      	</div>
+
+
+      	<div class="row">
+      		<div class="col s4"></div>
+        	<div class="col s3">
+        		<label for="past_exp"><font size="3">Share Your Experience</font></label>
+          		<input id="past_exp" type="text" class="validate">
+        	</div>
+        	<div class="col s5"></div>
+      	</div>
+
+
+      	<div class="row">
+      		<div class="col s8"></div>
+      		<div class="col s1">
+
+      			<button class="btn-floating btn-large waves-effect waves-light" type="submit" ><i class="material-icons">send</i></button>
+      		</div>
+      		<div class="col s3"></div>
+      	</div>
+
+
+    </form>
+</div>
+
+{% endblock %}
