@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>{% block title %}Page Title{% endblock %} | Election Portal</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/materialize.min.css' %}"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/style.css' %}"/>
-	
 	<script type="text/javascript" src="{% static 'Election_Portal/js/jquery-3.1.0.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'Election_Portal/js/materialize.min.js' %}"></script>
 
@@ -19,7 +19,7 @@
 		<div class="col s1"></div>		
 	</div>
 	</header>
-	<main>
+	<main style="padding:1%">
 	{% block content %}{% endblock %}
 	</main>
 	<footer>
