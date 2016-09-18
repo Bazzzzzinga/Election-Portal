@@ -15,3 +15,5 @@ def past(request):
 	return render(request,"Election_Portal/past.html")
 def ama(request):
 	return render(request,"Election_Portal/ama.html")
+def login(request):
+	return render(request,"Election_Portal/login.html")

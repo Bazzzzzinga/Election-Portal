@@ -8,5 +8,6 @@ urlpatterns=[url(r'^$',views.index,name='index'),
 		        url(r'^nominations/$',views.nominations,name='nominations'),
 			url(r'^status/$',views.status,name='status'),
 			url(r'^past/$',views.past,name='past'),
-			url(r'^ama/$',views.ama,name='ama')
+			url(r'^ama/$',views.ama,name='ama'),
+			url(r'^login/$',views.login,name='login'),
 ]
