@@ -10,4 +10,5 @@ urlpatterns=[url(r'^$',views.index,name='index'),
 			url(r'^past/$',views.past,name='past'),
 			url(r'^ama/$',views.ama,name='ama'),
 			url(r'^login/$',views.login,name='login'),
+			url(r'^aboutupcoming/$',views.aboutupcoming,name='aboutupcoming')
 ]

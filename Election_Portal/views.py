@@ -17,3 +17,5 @@ def ama(request):
 	return render(request,"Election_Portal/ama.html")
 def login(request):
 	return render(request,"Election_Portal/login.html")
+def aboutupcoming(request):
+	return render(request,"Election_Portal/aboutupcoming.html")
