@@ -1,4 +1,5 @@
 {% extends "Election_Portal/template.html" %}
+{% load staticfiles %}
 {% block title %}Home{% endblock %}
 {% block javascript %}
 $(document).ready(function(){
@@ -51,9 +52,9 @@ $('.modal-trigger').leanModal();
 			</table>
 			<div id="modal1" class="modal modal-fixed-footer z-depth-3">
 				<div class="modal-content">
-					<h4 align="center">Parliament Head</h4>
+					<h4 class="center-align">Parliament Head</h4>
 					<br>
-					<img src="" class="card-image">
+					<div class="center"><img src="{% static 'Election_Portal/images/winner.jpg' %}" class="card-image"></div>
 					Detailed Result:
 				</div>
 			</div>

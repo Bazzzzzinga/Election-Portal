@@ -19,6 +19,8 @@ main {
 	border-bottom-right-radius: 98%;
 	-webkit-transition: all 1s;
 	transition: all 1s; 
+	max-width: 20%;
+	max-height: auto;
 }
 .card-image:hover{
 	border-top-left-radius: 95%;
