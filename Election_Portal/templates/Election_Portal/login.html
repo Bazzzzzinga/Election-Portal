@@ -1,22 +1,25 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<!--
+Front end sucks real bad! None in our team is a good designer. :/
+-->
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">
-  <meta name="description" content="Materialize is a Material Design Admin Template,It&#39;s modern, responsive and based on Material Design by Google. ">
-  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-  <title>Login Page | Election Portal IIT BHU</title>
-
-
-  <link href="../../static/Election_Portal/css/materializelogin.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="../../static/Election_Portal/css/stylelogin.css" type="text/css" rel="stylesheet" media="screen,projection">  
-    <link href="../../static/Election_Portal/css/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">  
-    <link href="../../static/Election_Portal/css/style-horizontal.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="../../static/Election_Portal/css/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="../../static/Election_Portal/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="../../static/Election_Portal/css/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">  
+  <title>Login | Election Portal</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/materialize.min.css' %}"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/materializelogin.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/stylelogin.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/custom-style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/style-horizontal.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/page-center.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/prism.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'Election_Portal/css/perfect-scrollbar.css' %}"/>
+  <script type="text/javascript" src="{% static 'Election_Portal/js/jquery-3.1.0.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'Election_Portal/js/materialize.min.js' %}"></script>  
 </head>
 
 <body class="cyan loaded">
@@ -25,20 +28,18 @@
       <form class="login-form">
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="../../static/Election_Portal/images/logo.jpg" alt="" class="circle responsive-img valign profile-image-login">
+            <img src="{% static 'Election_Portal/images/logo.jpg' %}" class="circle responsive-img valign profile-image-login">
             <p class="center login-form-text">ELECTION PORTAL LOGIN</p>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-            
             <input id="username" type="text">
-            <label for="username" class="center-align">Username</label>
+            <label for="username" class="center-align">Email</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
-
             <input id="password" type="password">
             <label for="password">Password</label>
           </div>
