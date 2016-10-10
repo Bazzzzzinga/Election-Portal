@@ -1,5 +1,10 @@
 {% extends "Election_Portal/template.html" %}
 {% block title %}Home{% endblock %}
+{% block javascript %}
+$(document).ready(function(){
+$('.modal-trigger').leanModal();
+});
+{% endblock %}
 {% block content %}
 <div class="container" style="margin-top:20px">
 	<div class="row">
@@ -11,7 +16,47 @@
 			</ul>		
 		</div>
 		<div id="past" class="col s12">
-			No past elections available as of now.
+			<table class="striped centered">
+				<thead>
+					<tr>
+						<th data-field="name">Election</th>
+						<th data-field="winner">Winner</th>
+						<th data-field="details">Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							Parliament Head
+						</td>
+						<td>
+							Pranjal
+						</td>
+						<td>
+							<a href="#modal1" class="modal-trigger">Link</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Parliament Head
+						</td>
+						<td>
+							Pranjal
+						</td>
+						<td>
+							<a href="">Link</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="modal1" class="modal modal-fixed-footer z-depth-3">
+				<div class="modal-content">
+					<h4 align="center">Parliament Head</h4>
+					<br>
+					<img src="" class="card-image">
+					Detailed Result:
+				</div>
+			</div>
 		</div>
 		<div id="ongoing" class="col s12">
 			No ongoing elections available as of now.
@@ -21,4 +66,5 @@
 		</div>
 	</div>
 </div>
+
 {% endblock %}
