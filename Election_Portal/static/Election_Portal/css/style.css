@@ -10,7 +10,7 @@ main {
 .tabs {
 	overflow-x: hidden;
 }
-.card-image{
+.border-image{
 	margin: 0 auto 1em auto;
 	border: 4px solid #00C7E9;
 	border-top-left-radius: 87%;
@@ -22,7 +22,7 @@ main {
 	max-width: 20%;
 	max-height: auto;
 }
-.card-image:hover{
+.border-image:hover{
 	border-top-left-radius: 95%;
 	border-top-right-radius: 70%;
 	border-bottom-left-radius: 80%;
