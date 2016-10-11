@@ -19,3 +19,5 @@ def login(request):
 	return render(request,"Election_Portal/login.html")
 def aboutupcoming(request):
 	return render(request,"Election_Portal/aboutupcoming.html")
+def altlogin(request):
+	return render(request,"Election_Portal/alternate_login.html")

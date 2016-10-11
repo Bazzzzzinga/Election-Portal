@@ -1,0 +1,61 @@
+body {
+  	font-family: Lato, sans-serif;
+	max-width: 40em;
+	margin: 10em auto;
+	overflow-y: hidden;
+}
+
+form {
+	margin: 2em 0;
+}
+.Form-unit {
+	display: flex;
+	flex-flow: column;
+	margin-bottom: 1em;
+	padding: 0.75em 1.5em;
+	border: 0.175em solid;
+	color: rebeccapurple;
+	position: relative;
+}
+label, input {
+	transition: all 0.2s;
+}
+
+input {
+ 	order: 2;
+	font-size: 2.75em;
+	border: 0;
+	font-family: inherit;
+	border-radius: 0;
+	padding: 0;
+	color: currentColor;
+}
+
+#email:focus,#pass:focus {
+ 	outline: 0;
+	border-bottom: 1px solid lightgrey;
+}
+
+label {
+	letter-spacing: 0.05em;
+	font-size: 1.6em;
+}
+input:placeholder-shown + label 
+{
+	max-width: 66.66%;
+	transform-origin: left bottom;
+	transform: translate(0, 1.75em) scale(2.2);
+}
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+input:focus::-webkit-input-placeholder {
+ 	opacity: 1;
+}
+
+input:not(:placeholder-shown) + label,
+input:focus + label {
+	transform: translate(0, 0) scale(1);
+}
