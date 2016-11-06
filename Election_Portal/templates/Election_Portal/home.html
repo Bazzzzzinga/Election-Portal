@@ -17,53 +17,119 @@ $('.modal-trigger').leanModal();
 			</ul>		
 		</div>
 		<div id="past" class="col s12">
-			<table class="striped centered">
-				<thead>
-					<tr>
-						<th data-field="name">Election</th>
-						<th data-field="winner">Winner</th>
-						<th data-field="details">Details</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							Parliament Head
-						</td>
-						<td>
-							Pranjal
-						</td>
-						<td>
-							<a href="#modal1" class="modal-trigger">Link</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Parliament Head
-						</td>
-						<td>
-							Pranjal
-						</td>
-						<td>
-							<a href="">Link</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div id="modal1" class="modal modal-fixed-footer z-depth-3">
-				<div class="modal-content">
-					<h4 class="center-align">Parliament Head</h4>
-					<br>
-					<div class="center"><img src="{% static 'Election_Portal/images/winner.jpg' %}" class="border-image"></div>
-					Detailed Result:
-				</div>
-			</div>
+			{% if past_elections %}
+				<table class="striped centered">
+					<thead>
+						<tr>
+							<th data-field="name">Election</th>
+							<th data-field="vote_start_time">Voting start time</th>
+							<th data-field="vote_end_time">Voting end time</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for election in past_elections %}
+						<tr>
+							<td>
+								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
+								<div id="modal" class="modal modal-fixed-footer z-depth-3">
+									<div class="modal-content">
+										<!--<h4 class="center-align">Parliament Head</h4>
+										<br>
+										<div class="center"><img src="{% static 'Election_Portal/images/winner.jpg' %}" class="border-image"></div>
+										Detailed Result:-->
+										<!-- Write main content here. See above comment for sample writing. -->
+									</div>
+								</div>
+							</td>
+					 		<td>{{ election.vote_start_time|date:"M d Y, H:i" }}</td>
+					 		<td>{{ election.vote_end_time|date:"M d Y, H:i" }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<b>No past elections are available</b> 
+			{% endif %}
+
 		</div>
 		<div id="ongoing" class="col s12">
-			No ongoing elections available as of now.
+			{% if ongoing_elections %}
+				<table class="striped centered">
+					<thead>
+						<tr>
+							<th data-field="name">Election</th>
+							<th data-field="vote_start_time">Voting start time</th>
+							<th data-field="vote_end_time">Voting end time</th>
+							<th data-field="vote_link">Vote</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for election in ongoing_elections %}
+						<tr>
+							<td>
+								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
+								<div id="modal" class="modal modal-fixed-footer z-depth-3">
+									<div class="modal-content">
+										<!--Write main content here-->
+									</div>
+								</div>
+							</td>
+					 		<td>{{ election.vote_start_time|date:"M d Y, H:i" }}</td>
+					 		<td>{{ election.vote_end_time|date:"M d Y, H:i" }}</td>
+					 		<td><a href="{% url 'Election_Portal:vote' election.id	 %}">Click</a></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+			<b>No ongoing elections available as of now.</b>
+			{% endif %}
 		</div>
 		<div id="upcoming" class="col s12">
-			No upcoming elections available as of now.
+			{% if upcoming_elections %}
+				<table class="striped centered">
+					<thead>
+						<tr>
+							<th data-field="name">Election</th>
+							<th data-field="vote_start_time">Voting start time</th>
+							<th data-field="vote_end_time">Voting end time</th>
+							<th data-field="nominate">Nomination Link</th>
+						</tr>
+					</thead>
+					<tbody>
+						 {% for election in upcoming_elections %}
+						 	<tr>
+						 		<td>
+							 		<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
+							 		<div id="modal" class="modal modal-fixed-footer z-depth-3">
+						 				<div class="modal-content">
+							 				<!--<ul>
+							 					{% for nomination in election.listify %}
+							 						<li>{{ nomination }}</li>
+							 					{% endfor %}
+							 				</ul>-->
+							 				<!--Write main content here. See above comment for displaying list of nominations.-->
+						 				</div>
+						 			</div>
+						 		</td>
+						 		<td>{{ election.vote_start_time|date:"M d Y, H:i" }}</td>
+						 		<td>{{ election.vote_end_time|date:"M d Y, H:i" }}</td>
+						 		<td>
+							 		{% if election.nomval == "1" %}
+							 			Starts at {{ election.nom_start_time|date:"M d Y, H:i" }}
+							 		{% elif election.nomval == "2" %}
+							 			<a href="{% url 'Election_Portal:nominations' election.id	 %}">Click</a>
+							 		{% elif election.nomval == "3" %}
+							 			Ended at {{ election.nom_end_time|date:"M d Y, H:i" }}
+							 		{% endif %}
+						 		</td>
+						 	</tr>
+						 {% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<b>No upcoming elections are available</b> 
+			{% endif %}
 		</div>
 	</div>
 </div>

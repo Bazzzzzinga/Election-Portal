@@ -13,7 +13,7 @@ Front end sucks real bad! None in our team is a good designer. :/
 	<script type="text/javascript" src="{% static 'Election_Portal/js/jquery-3.1.0.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'Election_Portal/js/materialize.min.js' %}"></script>
 	<script type="text/javascript">
-		{% block javascript %}{% endblock %}	
+		{% block javascript %}{% endblock %}
 	</script>
 	
 </head>
@@ -21,6 +21,9 @@ Front end sucks real bad! None in our team is a good designer. :/
 	<header>
 		<div class="row"  style="padding:1%;border-color:#800000;border-top-width:5px;border-bottom-width:5px;border-right-width:0px;border-left-width:0px;border-style:solid">
 			<div class="col s10 offset-s1 center"><img src="{% static 'Election_Portal/images/header.png' %}"></div>		
+		</div>
+		<div class="row">
+			<div class="col s1 offset-s10"><a href="{% url 'Election_Portal:logout' %}" class="waves-effect waves-light btn">Logout</a>
 		</div>
 	</header>
 	<main style="padding:1%">
