@@ -9,11 +9,7 @@
 			minutes,
 			seconds;
 		    function timer() {
-			// get the number of seconds that have elapsed since 
-			// startTimer() was called
 			diff = duration - (((Date.now() - start) / 1000) | 0);
-
-			// does the same job as parseInt truncates the float
 			minutes = (diff / 60) | 0;
 			hours = (minutes/60) | 0;
 			minutes=(minutes-(hours*60)) | 0;
@@ -26,18 +22,15 @@
 			display.textContent = hours + ":" + minutes + ":" + seconds; 
 
 			if (diff <= 0) {
-			    // add one second so that the count down starts at the full 				duration
-			    // example 05:00 not 04:59
 			    start = Date.now() + 1000;
 			}
 		    };
-		    // we don't want to wait a full second before the timer starts
 		    timer();
 		    setInterval(timer, 1000);
 		}
 
 		window.onload = function () {
-		    var alpha = 60 * 60 * 5,
+		    var alpha = {{ time_left }},
 			display = document.querySelector('#time');
 		    startTimer(alpha, display);
 		};
@@ -53,7 +46,8 @@
 
 
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" method="POST" action="{% url 'Election_Portal:vote_done' election.id %}">
+    {% csrf_token %}
     	<div class="row">
     		<div class="col s1"></div>
 			<div class="col s2">
@@ -83,47 +77,30 @@
     	</div>
 
     	<br>
-
+        {% for candidate in candidates %}
     	<div class="row">
         	<div class="col s3"></div>
         	<div class="col s2">
-        		<font color="#8B008B">Male</font><br>
+        		<font color="#8B008B">{{ candidate.name }} ({{ candidate.user }})</font><br>
         	</div>
         	<div class="col s2">
-        		<font size="5" color="#DB7093">Computer Science</font>
+        		<font size="5" color="#DB7093">{{ candidate.branch }}</font>
         	</div>
         	<div class="col s2">
-        		 <a href="URL">Visit Manifesto</a> 
+        		<a href="#modal" class="modal-trigger">Manifesto Link</a>
+                <div id="modal" class="modal modal-fixed-footer z-depth-3">
+                    <div class="modal-content">
+                        {{ candidate.work_experience }}
+                    </div>
+                </div> 
         	</div>
         	<div class="col s1">
-        		<input color="black" id="male" type="radio" name="gender" value="male">
-                <label for="male"></label>
+        		<input color="black" id="{{ candidate.user }}" type="radio" name="candidate" value="{{ candidate.user }}">
+                <label for="{{ candidate.user }}"></label>
         	</div>
-        	<div class="col s2"></div>
     	</div>
-
-    	<br>
-
-    	<div class="row">
-        	<div class="col s3"></div>
-        	<div class="col s2">
-        		<font color="#8B008B">Female</font><br>
-        	</div>
-        	<div class="col s2">
-        		<font size="5" color="#DB7093">Mechanical</font>
-        	</div>
-        	<div class="col s2">
-        		 <a href="URL">Visit Manifesto</a> 
-        	</div>
-        	<div class="col s1">
-        		<input color="black" id="female" type="radio" name="gender" value="female">
-                <label for="female"></label>
-        	</div>
-        	<div class="col s2"></div>
-    	</div>
-
-    	<br>
-
+        <br>
+        {% endfor %}
     	<div class="row">
     		<div class="col s9"></div>
     		<div class="col s1">

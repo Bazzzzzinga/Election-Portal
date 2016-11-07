@@ -18,7 +18,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="past" class="col s12">
 			{% if past_elections %}
-				<table class="striped centered">
+				<table class="striped">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -33,11 +33,12 @@ $('.modal-trigger').leanModal();
 								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
 								<div id="modal" class="modal modal-fixed-footer z-depth-3">
 									<div class="modal-content">
-										<!--<h4 class="center-align">Parliament Head</h4>
+										<h4 class="center-align">{{ election.election_name }}</h4>
 										<br>
-										<div class="center"><img src="{% static 'Election_Portal/images/winner.jpg' %}" class="border-image"></div>
-										Detailed Result:-->
-										<!-- Write main content here. See above comment for sample writing. -->
+										{{ election.desc|safe }}
+										<br>
+										<h5>Winner:{{ election.winner }}</h5>										
+										<br>
 									</div>
 								</div>
 							</td>
@@ -54,7 +55,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="ongoing" class="col s12">
 			{% if ongoing_elections %}
-				<table class="striped centered">
+				<table class="striped">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -70,7 +71,16 @@ $('.modal-trigger').leanModal();
 								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
 								<div id="modal" class="modal modal-fixed-footer z-depth-3">
 									<div class="modal-content">
-										<!--Write main content here-->
+										<h4 class="center-align">{{ election.election_name }}</h4>
+										{{ election.desc|safe }}
+										<br>
+										<h5>Candidates:</h5>				
+										<br>
+										<ol>				
+										{% for candidate in election.candidate_set.all %}
+											<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}</li>
+										{% endfor %}
+										</ol>
 									</div>
 								</div>
 							</td>
@@ -87,7 +97,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="upcoming" class="col s12">
 			{% if upcoming_elections %}
-				<table class="striped centered">
+				<table class="striped">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -103,12 +113,16 @@ $('.modal-trigger').leanModal();
 							 		<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
 							 		<div id="modal" class="modal modal-fixed-footer z-depth-3">
 						 				<div class="modal-content">
-							 				<!--<ul>
-							 					{% for nomination in election.listify %}
-							 						<li>{{ nomination }}</li>
-							 					{% endfor %}
-							 				</ul>-->
-							 				<!--Write main content here. See above comment for displaying list of nominations.-->
+						 					<h4 class="center-align">{{ election.election_name }}</h4>
+											{{ election.desc|safe }}
+											<br>
+											<h5>Candidates:</h5>				
+											<br>
+											<ol>
+											{% for candidate in election.candidate_set.all %}
+												<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}</li>
+											{% endfor %}
+											</ol>
 						 				</div>
 						 			</div>
 						 		</td>

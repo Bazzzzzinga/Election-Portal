@@ -8,13 +8,9 @@ class Election(models.Model):
     nom_end_time=models.DateTimeField('Nominations end time')
     vote_start_time=models.DateTimeField('Voting start time')
     vote_end_time=models.DateTimeField('Voting end time')
-    candidateList=models.CharField(max_length=500,default="")
+    desc=models.TextField()
     def __str__(self):
         return self.election_name
-    def listify(self):
-    	return self.candidateList.split(';')[1:]
-    def addToList(self,toAdd):
-    	self.candidateList+=";"+toAdd;
     def nomval(self):
     	if self.nom_start_time>timezone.now():
     		return "1"
@@ -22,6 +18,11 @@ class Election(models.Model):
     		return "2"
     	else:
     		return "3"
+class Branch(models.Model):
+    name=models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
+        
 class Comment(models.Model):
     election=models.ForeignKey(Election,on_delete=models.CASCADE)
     user=models.CharField(max_length=30)
@@ -30,3 +31,15 @@ class Comment(models.Model):
     isCandidate=models.BooleanField(default=False)
     def __str__(self):
         return self.comment_content
+class Candidate(models.Model):
+    election=models.ForeignKey(Election,on_delete=models.CASCADE)
+    name=models.CharField(max_length=50)
+    branch=models.CharField(max_length=50)
+    work_experience=models.TextField()
+    user=models.CharField(max_length=30,primary_key=True)
+    vote_count=models.IntegerField(default=0)
+    def __str__(self):
+        return self.name
+class Voter(models.Model):
+    election=models.ForeignKey(Election,on_delete=models.CASCADE)
+    user=models.CharField(max_length=30,primary_key=True)

@@ -6,6 +6,7 @@ urlpatterns=[
 			url(r'^$',views.home,name='index'),
 			url(r'^OnGoing/$',views.OnGoing,name='OnGoing'),
 		    url(r'^election/(?P<pk>\d+)/nominations/$',views.nominations,name='nominations'),
+		    url(r'^election/(?P<pk>\d+)/nomination_filled/$',views.nomination_filled,name='nomination_filled'),
 			url(r'^status/$',views.status,name='status'),
 			url(r'^past/$',views.past,name='past'),
 			url(r'^election/(?P<pk>\d+)/ama/$',views.ama,name='ama'),
@@ -13,5 +14,5 @@ urlpatterns=[
 			url(r'^accounts/login/$', auth_views.login, {'template_name': 'Election_Portal/login.html'},name='login'),
     		url(r'^accounts/logout/$',auth_views.logout,{'next_page': '/'},name='logout'),
  			url(r'^election/(?P<pk>\d+)/vote/$',views.vote,name='vote'),
-    		   		
+ 			url(r'^election/(?P<pk>\d+)/vote_done/$',views.vote_done,name='vote_done'),
 ]
