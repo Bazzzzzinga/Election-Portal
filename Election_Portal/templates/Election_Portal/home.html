@@ -37,7 +37,9 @@ $('.modal-trigger').leanModal();
 										<br>
 										{{ election.desc|safe }}
 										<br>
-										<h5>Winner:{{ election.winner }}</h5>										
+										<h5>Winner:</h5>
+										<div class="center"><img src="{{ election.winner.profile_pic.url }}" class="border-image"></div>
+										{{ election.winner }}									
 										<br>
 									</div>
 								</div>
@@ -120,7 +122,7 @@ $('.modal-trigger').leanModal();
 											<br>
 											<ol>
 											{% for candidate in election.candidate_set.all %}
-												<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}</li>
+												<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}{% if election.nomval == "3" %}<br><a href="{% url 'Election_Portal:ama' candidate.myid %}">AMA</a>{% endif %}</li>
 											{% endfor %}
 											</ol>
 						 				</div>

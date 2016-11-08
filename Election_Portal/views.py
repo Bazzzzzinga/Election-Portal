@@ -9,8 +9,8 @@ from django.db import transaction
 # Create your views here.
 def convert_timedelta(duration):
     days, seconds = duration.days, duration.seconds
-    hours = seconds // 3600
-    minutes = (seconds % 3600) // 60
+    hours = seconds / 3600
+    minutes = (seconds % 3600) / 60
     seconds = (seconds % 60)
     return days*3600*24+hours*3600+minutes*60+seconds
 
@@ -26,9 +26,6 @@ def home(request):
         'past_elections':past_elections,
     })
 @login_required
-def OnGoing(request):
-    return render(request,"Election_Portal/OnGoing.html")
-@login_required
 def nominations(request,pk):
     try:
         election=Election.objects.get(pk=pk)
@@ -41,18 +38,6 @@ def nominations(request,pk):
         })
     else:
         return HttpResponseRedirect(reverse('Election_Portal:index'))
-@login_required
-def status(request):
-    return render(request,"Election_Portal/status.html")
-@login_required
-def past(request):
-    return render(request,"Election_Portal/past.html")
-@login_required
-def ama(request,pk):
-    return render(request,"Election_Portal/ama.html")
-@login_required
-def aboutupcoming(request):
-    return render(request,"Election_Portal/aboutupcoming.html")
 @login_required
 def vote(request,pk):
     election=get_object_or_404(Election,pk=pk)
@@ -86,3 +71,18 @@ def vote_done(request,pk):
         candidate_voted.vote_count+=1
         candidate_voted.save()
         return HttpResponseRedirect(reverse('Election_Portal:index'))
+@login_required
+def ama(request,pk):
+    candidate=get_object_or_404(Candidate,pk=pk)
+    if candidate.election.nomval()!="3":
+        return HttpResponseRedirect(reverse('Election_Portal:index'))
+    return render(request,"Election_Portal/ama.html",{
+            'candidate':candidate,
+            'canEdit':candidate.election.vote_start_time>timezone.now(),
+        })
+@login_required
+def post_comment(request,pk):
+    candidate=get_object_or_404(Candidate,pk=pk)
+    comment=Comment(candidate=candidate,user=request.user.username,comment_content=request.POST['comment'],comment_time=timezone.now())
+    comment.save()
+    return HttpResponseRedirect(reverse('Election_Portal:ama',kwargs={'pk':pk}))

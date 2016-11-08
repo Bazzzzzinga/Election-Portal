@@ -46,6 +46,7 @@ Login
 {% endif %}
 
 <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+    <center><img src="{% static 'Election_Portal/images/logo.jpg' %}"><br><h1>ELECTION PORTAL LOGIN</h1></center>
   <div class="form-row">
     {{ form.username.errors }}
     {{ form.username.label_tag }} {{ form.username }}
