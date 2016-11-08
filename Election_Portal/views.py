@@ -52,6 +52,8 @@ def nomination_filled(request,pk):
     election=get_object_or_404(Election,pk=pk)
     if election.nomval()!="2":
         return HttpResponseRedirect(reverse('Election_Portal:index'))
+    elif Candidate.objects.filter(election=election,user=request.user.username).exists():
+        return HttpResponseRedirect(reverse('Election_Portal:index'))
     else:
         candidate=Candidate(name=request.POST['name'],branch=request.POST['branch'],user=request.user.username,
             work_experience=request.POST['work'],election=election)
