@@ -7,7 +7,7 @@
 
 
 <div class="row" style="margin-top:4%">
-    <form class="col s4 offset-s4" class="col s12" method="POST" action="{% url 'Election_Portal:nomination_filled' election.id %}">
+    <form class="col s4 offset-s4" method="POST" action="{% url 'Election_Portal:nomination_filled' election.id %}" enctype="multipart/form-data">
        {% csrf_token %}
         <div class="input-field col s12">
       		<label for="name">Name</label>
@@ -25,6 +25,10 @@
   	    <div class="input-field col s12">
           <label for="past_exp">Manifesto</label>
           <textarea id="past_exp" class="validate materialize-textarea" name="work" required="true"></textarea>
+        </div>
+        <div class="input-field col s12">
+          <input type="file" name="profile_pic" id="profile_pic" required="true" class="validate">
+          <label for="profile_pic">Profile Picture</label>
         </div>
       	<button class="btn-floating btn-large waves-effect waves-light" type="submit" ><i class="material-icons">send</i></button>
     </form>

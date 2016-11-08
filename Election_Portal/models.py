@@ -20,7 +20,11 @@ class Election(models.Model):
 		else:
 			return "3"
 	def winner(self):
-		return self.candidate_set.all().order_by('-vote_count')[0]
+		x=self.candidate_set.all().order_by('-vote_count')
+		if x:
+			return x[0]
+		else:
+			return None
 class Branch(models.Model):
 	name=models.CharField(max_length=50)
 	def __str__(self):
@@ -33,7 +37,7 @@ class Candidate(models.Model):
 	work_experience=models.TextField()
 	user=models.CharField(max_length=30)
 	vote_count=models.IntegerField(default=0)
-	profile_pic=models.ImageField(blank=True)
+	profile_pic=models.ImageField(upload_to='media/',blank=True)
 	def __str__(self):
 		return self.name
 

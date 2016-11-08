@@ -55,9 +55,11 @@ def nomination_filled(request,pk):
     elif Candidate.objects.filter(election=election,user=request.user.username).exists():
         return HttpResponseRedirect(reverse('Election_Portal:index'))
     else:
+        print "Hi"
         candidate=Candidate(name=request.POST['name'],branch=request.POST['branch'],user=request.user.username,
-            work_experience=request.POST['work'],election=election)
+            work_experience=request.POST['work'],election=election,profile_pic=request.FILES['profile_pic'])
         candidate.save()
+        print "Hi"
         return HttpResponseRedirect(reverse('Election_Portal:index'))
 @transaction.atomic
 def vote_done(request,pk):
