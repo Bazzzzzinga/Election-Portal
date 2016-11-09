@@ -30,8 +30,8 @@ $('.modal-trigger').leanModal();
 						{% for election in past_elections %}
 						<tr>
 							<td>
-								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
-								<div id="modal" class="modal modal-fixed-footer z-depth-3">
+								<a href="#modal{{ election.id }}" class="modal-trigger">{{ election.election_name }}</a>
+								<div id="modal{{ election.id }}" class="modal modal-fixed-footer z-depth-3">
 									<div class="modal-content">
 										<h4 class="center-align">{{ election.election_name }}</h4>
 										<br>
@@ -69,8 +69,8 @@ $('.modal-trigger').leanModal();
 						{% for election in ongoing_elections %}
 						<tr>
 							<td>
-								<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
-								<div id="modal" class="modal modal-fixed-footer z-depth-3">
+								<a href="#modal{{ election.id }}" class="modal-trigger">{{ election.election_name }}</a>
+								<div id="modal{{ election.id }}" class="modal modal-fixed-footer z-depth-3">
 									<div class="modal-content">
 										<h4 class="center-align">{{ election.election_name }}</h4>
 										{{ election.desc|safe }}
@@ -111,8 +111,8 @@ $('.modal-trigger').leanModal();
 						 {% for election in upcoming_elections %}
 						 	<tr>
 						 		<td>
-							 		<a href="#modal" class="modal-trigger">{{ election.election_name }}</a>
-							 		<div id="modal" class="modal modal-fixed-footer z-depth-3">
+							 		<a href="#modal{{ election.id }}" class="modal-trigger">{{ election.election_name }}</a>
+							 		<div id="modal{{ election.id }}" class="modal modal-fixed-footer z-depth-3">
 						 				<div class="modal-content">
 						 					<h4 class="center-align">{{ election.election_name }}</h4>
 											{{ election.desc|safe }}
