@@ -1,5 +1,5 @@
 {% extends "Election_Portal/template.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Vote{% endblock %}
 {% block content %}
 <script>
 	function startTimer(duration, display) {
@@ -74,8 +74,8 @@
                         <font color="#DB7093">{{ candidate.branch }}</font>
                     </td>
                     <td>
-                        <a href="#modal" class="modal-trigger">Link</a>
-                        <div id="modal" class="modal modal-fixed-footer z-depth-3">
+                        <a href="#modal{{ candidate.myid }}" class="modal-trigger">Link</a>
+                        <div id="modal{{ candidate.myid }}" class="modal modal-fixed-footer z-depth-3">
                             <div class="modal-content">
                                 <h5>{{ candidate.name }}, {{ candidate.branch }}</h5>
                                 <hr>
@@ -94,11 +94,9 @@
             </tbody>
         </table>
     	<div class="row">
-    		<div class="col s9"></div>
-    		<div class="col s1">
+    		<div class="col s1 offset-s9">
     			<button type="submit" name="action">Submit</button>
     		</div>
-    		<div class="col s2"></div>
     	</div>
     </form>
 </div>

@@ -11,5 +11,8 @@ urlpatterns=[
     		url(r'^accounts/logout/$',auth_views.logout,{'next_page': '/'},name='logout'),
  			url(r'^election/(?P<pk>\d+)/vote/$',views.vote,name='vote'),
  			url(r'^election/(?P<pk>\d+)/vote_done/$',views.vote_done,name='vote_done'),
- 			url(r'^ama/(?P<pk>\d+)/post_comment/$',views.post_comment,name='post_comment')
+ 			url(r'^ama/(?P<pk>\d+)/post_comment/$',views.post_comment,name='post_comment'),
+ 			url(r'^faq/',views.faq,name='faq'),
+ 			url(r'^contact',views.contact,name='contact'),
+ 			url(r'^msgsent',views.msgsent,name='msgsent'),
 ]

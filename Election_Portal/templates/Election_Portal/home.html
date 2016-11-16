@@ -4,7 +4,9 @@
 {% block javascript %}
 $(document).ready(function(){
 $('.modal-trigger').leanModal();
+Materialize.toast('{{ toast_message }}', 30000,'rounded');
 });
+
 {% endblock %}
 {% block content %}
 <div class="container" style="margin-top:20px">
@@ -18,7 +20,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="past" class="col s12">
 			{% if past_elections %}
-				<table class="striped">
+				<table class="striped responsive-table">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -37,9 +39,11 @@ $('.modal-trigger').leanModal();
 										<br>
 										{{ election.desc|safe }}
 										<br>
+										{% if election.winner %}
 										<h5>Winner:</h5>
 										<div class="center"><img src="{{ election.winner.profile_pic.url }}" class="border-image"><br><strong>{{ election.winner }}</strong></div>						
 										<br>
+										{% endif %}
 									</div>
 								</div>
 							</td>
@@ -56,7 +60,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="ongoing" class="col s12">
 			{% if ongoing_elections %}
-				<table class="striped">
+				<table class="striped responsive-table">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -75,13 +79,15 @@ $('.modal-trigger').leanModal();
 										<h4 class="center-align">{{ election.election_name }}</h4>
 										{{ election.desc|safe }}
 										<br>
+										{% if election.candidate_set.all %}
 										<h5>Candidates:</h5>				
 										<br>
-										<ol>				
+										<ol>
 										{% for candidate in election.candidate_set.all %}
-											<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}</li>
+											<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}{% if election.nomval == "3" %}<br><a href="{% url 'Election_Portal:ama' candidate.myid %}">AMA</a>{% endif %}</li>
 										{% endfor %}
 										</ol>
+										{% endif %}
 									</div>
 								</div>
 							</td>
@@ -98,7 +104,7 @@ $('.modal-trigger').leanModal();
 		</div>
 		<div id="upcoming" class="col s12">
 			{% if upcoming_elections %}
-				<table class="striped">
+				<table class="striped responsive-table">
 					<thead>
 						<tr>
 							<th data-field="name">Election</th>
@@ -117,6 +123,7 @@ $('.modal-trigger').leanModal();
 						 					<h4 class="center-align">{{ election.election_name }}</h4>
 											{{ election.desc|safe }}
 											<br>
+											{% if election.candidate_set.all %}
 											<h5>Candidates:</h5>				
 											<br>
 											<ol>
@@ -124,6 +131,7 @@ $('.modal-trigger').leanModal();
 												<li><h6>{{ candidate }}, {{ candidate.branch }}</h6><br>{{ candidate.work_experience|safe }}{% if election.nomval == "3" %}<br><a href="{% url 'Election_Portal:ama' candidate.myid %}">AMA</a>{% endif %}</li>
 											{% endfor %}
 											</ol>
+											{% endif %}
 						 				</div>
 						 			</div>
 						 		</td>

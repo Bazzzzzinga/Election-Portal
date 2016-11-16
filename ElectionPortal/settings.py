@@ -27,7 +27,11 @@ SECRET_KEY = '9e6-u1q$5s9!70ad-t8p+jamjmx$xwz%7ko*k$7n(!q5#*!rae'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+EMAIL_USE_TLS = True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER='iitbhuchess@gmail.com'
+EMAIL_HOST_PASSWORD='iitbhu12'
 # Application definition
 
 INSTALLED_APPS = [
@@ -72,7 +76,7 @@ WSGI_APPLICATION = 'ElectionPortal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ElectionPortal',
+        'NAME': 'Election_Portal',
         'USER':'postgres',
         'PASSWORD':'qwerty123',
         'HOST':'localhost',
@@ -80,6 +84,12 @@ DATABASES = {
     }
 }
 
+
+#SECURE_HSTS_SECONDS = 31536000
+#SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+#CSRF_COOKIE_SECURE=True
+#SESSION_COOKIE_SECURE=True
+#SECURE_SSL_REDIRECT=False
 
 AUTH_PASSWORD_VALIDATORS = [
     {

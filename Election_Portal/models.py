@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 class Election(models.Model):
-
 	election_name=models.CharField(max_length=50)
 	nom_start_time=models.DateTimeField('Nominations start time')
 	nom_end_time=models.DateTimeField('Nominations end time')
@@ -52,4 +51,4 @@ class Comment(models.Model):
 		return candidate.user==self.user
 class Voter(models.Model):
 	election=models.ForeignKey(Election,on_delete=models.CASCADE)
-	user=models.CharField(max_length=30,primary_key=True)
+	user=models.CharField(max_length=30)

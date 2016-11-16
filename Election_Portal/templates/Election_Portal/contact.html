@@ -1,0 +1,23 @@
+{% extends "Election_Portal/template.html" %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top:4%">
+    <div class="center"><h4>Contact Us</h4></div>
+    <form class="col s4 offset-s4" method="POST" action="{% url 'Election_Portal:msgsent' %}">
+       {% csrf_token %}
+        
+        <div class="input-field col s12">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" class="validate" name="subject" required="true">
+        </div>
+        <div class="input-field col s12">
+          <label for="message">Message</label>
+          <textarea id="message" class="validate materialize-textarea" name="message" required="true"></textarea>
+        </div>
+        <center><button class="btn-floating btn-large waves-effect waves-light" type="submit" ><i class="material-icons">send</i></button></center>
+    </form>
+</div>
+{% endblock %}
+{% block javascript %}
+{% endblock %}
